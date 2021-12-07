@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 	"log"
@@ -10,12 +11,15 @@ import (
 	"golang.org/x/net/html"
 )
 
-func main() {
+// getPaxMap returns a json object (as a string) of all classes
+// to their pax index
+func getPaxMap() string {
 	// Holds all the class names to pax indices
 	paxIndices := make(map[string]string)
 
 	url := "https://www.solotime.info/pax/"
 
+	fmt.Println("Fetching HTML from https://www.solotime.info/pax/...")
 	res, err := http.Get(url)
 	if err != nil {
 		log.Fatal(err)
@@ -24,9 +28,8 @@ func main() {
 	if res.StatusCode > 299 {
 		log.Fatalf("Response failed with status code: %d \n", res.StatusCode)
 	}
-	if err != nil {
-		log.Fatal(err)
-	}
+
+	fmt.Println("Finished fetching HTML")
 
 	z := html.NewTokenizer(res.Body)
 
@@ -71,5 +74,23 @@ func main() {
 		}
 	}
 
-	fmt.Printf("+%v", paxIndices)
+	jsonString, err := json.Marshal(paxIndices)
+	if err != nil {
+		log.Fatal("Could not Marhsal json", err)
+	}
+
+	return string(jsonString)
+}
+
+// generatePaxCalculator outputs a static site from go templates
+// that allows you to compare autocross runs across different classes
+func generateSite(paxMap string) {
+	fmt.Println("Generating static site...")
+}
+
+func main() {
+	paxMap := getPaxMap()
+	fmt.Println(paxMap)
+
+	generateSite(paxMap)
 }
