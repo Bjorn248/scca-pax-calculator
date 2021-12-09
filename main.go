@@ -52,23 +52,21 @@ func getPaxMap() string {
 		token := z.Token()
 		if token.Type == html.StartTagToken {
 			if token.Data == "td" {
-				if string(z.Raw()) == `<td align="left" valign="middle">` {
-					z.Next()
-					if paxValue == false {
-						className = strings.TrimSpace(string(z.Text()))
-						if className == "" || className == "\n" {
-							continue
-						}
-						paxValue = true
-					} else {
-						classPax = strings.Trim(strings.TrimSpace(string(z.Text())), ".")
-						if classPax == "" || classPax == "\n" {
-							continue
-						}
-						paxValue = false
-
-						paxIndices[className] = classPax
+				z.Next()
+				if paxValue == false {
+					className = strings.TrimSpace(string(z.Text()))
+					if className == "" || className == "\n" || strings.Contains(className, "Results") {
+						continue
 					}
+					paxValue = true
+				} else {
+					classPax = strings.Trim(strings.TrimSpace(string(z.Text())), ".")
+					if classPax == "" || classPax == "\n" || strings.Contains(classPax, "Results") {
+						continue
+					}
+					paxValue = false
+
+					paxIndices[className] = classPax
 				}
 			}
 		}

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="Description" content="SCCA Pax Calculator">
     <title>SCCA PAX Calculator</title>
-    <script src="common.js"></script>
     <link rel="stylesheet" href="styles.css">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -16,12 +15,25 @@
       <h1>
         Welcome to the SCCA PAX Calculator!
       </h1>
-      <h2>
-        This tool is designed to help you figure what kind of raw time you need to have a better
-        PAX time than a competitor in a different class, given their raw time.
+      <div id="paxCalculator" class="center">
+        <h2 id="paxCalculatorPrompt">
+          Enter your competitor's class and raw time and you will see the raw time you are required
+          to beat to have a better pax time than your competitor.
+        </h2>
+        <label for="competitorClass">Competitor Class:</label>
+        <select name="competitorClass" id="competitorClass" class="select-css">
+        </select>
+        <label for="competitorRawTime">Competitor Raw Time: </label>
+        <input type="text" id="competitorRawTime" name="competitorRawTime"><br><br>
         </br>
-      </h2>
-      </br>
+        </br>
+        <label for="yourClass">Your Class:</label>
+        <select name="yourClass" id="yourClass" class="select-css">
+        </select>
+        <h2>Raw time to beat:</h2>
+        <h1 id="rawTimeToBeat"></h1>
+        </br>
+      </div>
       <p>
         <b>DISCLAIMER</b>: This is not an official SCCA website.
         This is a third-party website.
@@ -34,5 +46,6 @@
         <a href="https://github.com/Bjorn248/scca-pax-calculator" target="_blank" rel="noopener noreferrer">on Github</a>.
       </h3>
     </div>
+    <script src="common.js"></script>
   </body>
 </html>
