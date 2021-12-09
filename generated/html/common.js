@@ -101,6 +101,8 @@ function populateDropDown(id) {
   if (sessionStorage.getItem(id) in PAXIndex) {
     const providedCompetitorClass = sessionStorage.getItem(id);
     e.value = providedCompetitorClass;
+  } else {
+    sessionStorage.setItem(id, e.value)
   }
 };
 
