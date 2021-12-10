@@ -9,30 +9,26 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
   </head>
-
   <body>
     <div class="center sansserif">
-      <h1>
-        Welcome to the SCCA PAX Calculator!
-      </h1>
-      <div id="paxCalculator" class="center">
-        <h2 id="paxCalculatorPrompt">
-          Enter your competitor's class and raw time and you will see the raw time you are required
-          to beat to have a better pax time than your competitor.
-        </h2>
+      <h4 id="paxCalculatorPrompt">
+        Enter your competitor's class and raw time and you will see the raw time you are required
+        to beat to have a better pax time than your competitor.
+      </h4>
+      <div id="paxCalculator" class="paxCalculator center">
         <label for="competitorClass">Competitor Class:</label>
         <select name="competitorClass" id="competitorClass" class="select-css">
         </select>
+        <p id="competitorPax" class="pax"></p>
         <label for="competitorRawTime">Competitor Raw Time: </label>
-        <input inputmode="numeric" pattern="[0-9.]" type="text" id="competitorRawTime" name="competitorRawTime"><br><br>
-        </br>
-        </br>
+        <input inputmode="decimal" pattern="[0-9.]" type="text" id="competitorRawTime" name="competitorRawTime">
         <label for="yourClass">Your Class:</label>
         <select name="yourClass" id="yourClass" class="select-css">
         </select>
-        <h2>Raw time to beat:</h2>
-        <h1 id="rawTimeToBeat"></h1>
-        </br>
+        <p id="yourPax" class="pax"></p>
+        <input id="submitButton" type="submit" value="Submit">
+        <h4>Raw time to beat:</h4>
+        <h2 id="rawTimeToBeat"></h2>
       </div>
       <p>
         <b>DISCLAIMER</b>: This is not an official SCCA website.

@@ -71,14 +71,17 @@ function eventToState(e) {
 
 function calculateRequiredRawTime() {
   // pseudo-code formula
-  // paxTime1 = rawTime * pax1
-  // paxTime1 = x * pax2
+  // competitorPaxTime = rawTime * competitorPax
+  // paxTime1 = yourRawTime * yourPax
   // requiredRawTime = paxTime1 / pax2
   rawTime = sessionStorage.getItem("competitorRawTime");
-  pax1 = PAXIndex[sessionStorage.getItem("competitorClass")];
-  pax2 = PAXIndex[sessionStorage.getItem("yourClass")];
-  console.log(pax1, pax2);
-  let requiredRawTime = (rawTime * pax1) / pax2;
+  competitorPax = PAXIndex[sessionStorage.getItem("competitorClass")];
+  yourPax = PAXIndex[sessionStorage.getItem("yourClass")];
+  competitorPaxParagraph = document.getElementById("competitorPax");
+  yourPaxParagraph = document.getElementById("yourPax");
+  competitorPaxParagraph.innerHTML = "PAX: " + competitorPax;
+  yourPaxParagraph.innerHTML = "PAX: " + yourPax;
+  let requiredRawTime = (rawTime * competitorPax) / yourPax;
   // show number with 3 digits after the decimal
   if (!isNaN(requiredRawTime) && requiredRawTime != 0) {
     requiredRawTime = Number(parseFloat(requiredRawTime).toFixed(3))
@@ -123,6 +126,7 @@ const competitorClass = document.getElementById("competitorClass");
 const yourClass = document.getElementById("yourClass");
 const competitorRawTime = document.getElementById("competitorRawTime");
 const rawTimeToBeat = document.getElementById("rawTimeToBeat");
+const submitButton = document.getElementById("submitButton");
 
 competitorClass.addEventListener("change", eventToState);
 yourClass.addEventListener("change", eventToState);
@@ -131,6 +135,7 @@ competitorRawTime.addEventListener("change", eventToState);
 competitorClass.addEventListener("change", calculateRequiredRawTime);
 yourClass.addEventListener("change", calculateRequiredRawTime);
 competitorRawTime.addEventListener("change", calculateRequiredRawTime);
+submitButton.addEventListener("click", calculateRequiredRawTime);
 
 populatePAXDropdowns();
 populateInput();
