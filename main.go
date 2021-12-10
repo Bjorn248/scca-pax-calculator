@@ -6,7 +6,9 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"os"
 	"strings"
+	"text/template"
 
 	"golang.org/x/net/html"
 )
@@ -84,11 +86,26 @@ func getPaxMap() string {
 // that allows you to compare autocross runs across different classes
 func generateSite(paxMap string) {
 	fmt.Println("Generating static site...")
+	tpl, err := template.ParseFiles("templates/common.js.tmpl")
+	if err != nil {
+		log.Fatal("Could not parse template", err)
+	}
+
+	outFile, err := os.Create("generated/common.js")
+	if err != nil {
+		log.Fatal("Could not create file", err)
+	}
+
+	err = tpl.Execute(outFile, paxMap)
+	if err != nil {
+		log.Fatal("Could not execute template", err)
+	}
+
+	outFile.Close()
+	fmt.Println("Done!")
 }
 
 func main() {
 	paxMap := getPaxMap()
-	fmt.Println(paxMap)
-
 	generateSite(paxMap)
 }
