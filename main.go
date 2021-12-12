@@ -74,7 +74,7 @@ func getPaxMap() string {
 		}
 	}
 
-	jsonString, err := json.Marshal(paxIndices)
+	jsonString, err := json.MarshalIndent(paxIndices, "", "  ")
 	if err != nil {
 		log.Fatal("Could not Marhsal json", err)
 	}
@@ -91,7 +91,7 @@ func generateSite(paxMap string) {
 		log.Fatal("Could not parse template", err)
 	}
 
-	outFile, err := os.Create("generated/common.js")
+	outFile, err := os.Create("src/common.js")
 	if err != nil {
 		log.Fatal("Could not create file", err)
 	}
