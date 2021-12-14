@@ -25,3 +25,4 @@ jobs:
         commit-message: auto-generated updates to common.js
         title: auto-generated updates to common.js
         branch: generated-changes
+        reviewers: @Bjorn248
