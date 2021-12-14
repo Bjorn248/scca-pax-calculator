@@ -21,6 +21,7 @@ then
   fi
   git checkout -b $branch_name
   git stash pop
+  ./lint_and_fix.sh
 else
   echo "Found no difference in the generated file, exiting"
   exit 0
