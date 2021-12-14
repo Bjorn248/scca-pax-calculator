@@ -1,4 +1,4 @@
-// This file is generated
+// This file is generated, manual edits will be lost
 
 const PAXIndex = {
   "AM": "1.000",
@@ -48,7 +48,7 @@ const PAXIndex = {
   "STU": "0.829",
   "STX": "0.817",
   "XP": "0.885",
-  "XS-A": "0.842",
+  "XS-A": "0.248",
   "XS-B": "0.851",
 };
 

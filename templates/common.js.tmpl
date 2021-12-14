@@ -1,4 +1,4 @@
-// This file is generated
+// This file is generated, manual edits will be lost
 
 const PAXIndex = {{.}};
 
@@ -14,10 +14,21 @@ function setState(keyArray, valueArray) { // eslint-disable-line no-unused-vars
   }
 };
 
+/**
+ * This stores the value of an element that triggered an event in sessionStorage
+ * @param {event} e is a DOM event
+ */
 function eventToState(e) {
-  setState([e.target.name], [e.target.value])
+  setState([e.target.name], [e.target.value]);
 };
 
+/**
+ * Calculates the required raw time given the
+ * competitorRawTime
+ * competitorClass
+ * yourClass
+ * which should be in sessionStorage when this function is called
+ */
 function calculateRequiredRawTime() {
   // pseudo-code formula
   // competitorPaxTime = rawTime * competitorPax
@@ -33,12 +44,16 @@ function calculateRequiredRawTime() {
   let requiredRawTime = (rawTime * competitorPax) / yourPax;
   // show number with 3 digits after the decimal
   if (!isNaN(requiredRawTime) && requiredRawTime != 0) {
-    requiredRawTime = Number(parseFloat(requiredRawTime).toFixed(3))
+    requiredRawTime = Number(parseFloat(requiredRawTime).toFixed(3));
     const rawTimeToBeat = document.getElementById("rawTimeToBeat");
-    rawTimeToBeat.innerHTML = requiredRawTime
+    rawTimeToBeat.innerHTML = requiredRawTime;
   }
 }
 
+/**
+ * Populates the select elements with the keys from PAXIndex
+ * @param {string} id is the html id of a select element to populate
+ */
 function populateDropDown(id) {
   const e = document.getElementById(id);
   const classLength = e.options.length;
@@ -46,7 +61,7 @@ function populateDropDown(id) {
     e.remove(i);
   }
   for (const Class of Object.keys(PAXIndex)) {
-    const newClass = document.createElement('option');
+    const newClass = document.createElement("option");
     newClass.text = Class;
     e.add(newClass);
   }
@@ -54,10 +69,14 @@ function populateDropDown(id) {
     const providedCompetitorClass = sessionStorage.getItem(id);
     e.value = providedCompetitorClass;
   } else {
-    sessionStorage.setItem(id, e.value)
+    sessionStorage.setItem(id, e.value);
   }
 };
 
+/**
+ * Populates the competitorRawTime text input field if there is a value already
+ * in sessionStorage
+ */
 function populateInput() {
   const e = document.getElementById("competitorRawTime");
   if (sessionStorage.getItem("competitorRawTime")) {
@@ -66,6 +85,9 @@ function populateInput() {
   }
 }
 
+/**
+ * populates the PAX selection dropdowns
+ */
 function populatePAXDropdowns() {
   populateDropDown("competitorClass");
   populateDropDown("yourClass");
@@ -74,7 +96,6 @@ function populatePAXDropdowns() {
 const competitorClass = document.getElementById("competitorClass");
 const yourClass = document.getElementById("yourClass");
 const competitorRawTime = document.getElementById("competitorRawTime");
-const rawTimeToBeat = document.getElementById("rawTimeToBeat");
 const submitButton = document.getElementById("submitButton");
 
 competitorClass.addEventListener("change", eventToState);
