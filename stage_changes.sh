@@ -21,9 +21,6 @@ then
   fi
   git checkout -b $branch_name
   git stash pop
-  git add -A
-  git commit -m 'auto-generated changes'
-  git push origin $branch_name
 else
   echo "Found no difference in the generated file, exiting"
   exit 0
