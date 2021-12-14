@@ -3,7 +3,7 @@ name: Automated Changes
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron: '*/10 * * * *'
+    - cron: '2 4 8 * *'
 
 jobs:
   generate:
@@ -28,4 +28,3 @@ jobs:
         commit-message: auto-generated updates to common.js
         title: auto-generated updates to common.js
         branch: generated-changes
-        reviewers: "@Bjorn248"
