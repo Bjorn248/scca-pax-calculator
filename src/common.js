@@ -1,4 +1,4 @@
-// This file is generated
+// This file is generated, manual edits will be lost
 
 const PAXIndex = {
   "AM": "1.000",
