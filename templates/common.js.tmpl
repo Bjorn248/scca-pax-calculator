@@ -93,10 +93,25 @@ function populatePAXDropdowns() {
   populateDropDown("yourClass");
 }
 
+/**
+ * swaps the class selections
+ */
+function swapClasses() {
+  if (sessionStorage.getItem("competitorClass") && sessionStorage.getItem("yourClass")) {
+    const oldCompetitorClass = sessionStorage.getItem("competitorClass");
+    sessionStorage.setItem("competitorClass", sessionStorage.getItem("yourClass"));
+    sessionStorage.setItem("yourClass", oldCompetitorClass);
+    populatePAXDropdowns();
+    populateInput();
+    calculateRequiredRawTime();
+  }
+}
+
 const competitorClass = document.getElementById("competitorClass");
 const yourClass = document.getElementById("yourClass");
 const competitorRawTime = document.getElementById("competitorRawTime");
 const submitButton = document.getElementById("submitButton");
+const swapButton = document.getElementById("swapButton");
 
 competitorClass.addEventListener("change", eventToState);
 yourClass.addEventListener("change", eventToState);
@@ -106,6 +121,7 @@ competitorClass.addEventListener("change", calculateRequiredRawTime);
 yourClass.addEventListener("change", calculateRequiredRawTime);
 competitorRawTime.addEventListener("change", calculateRequiredRawTime);
 submitButton.addEventListener("click", calculateRequiredRawTime);
+swapButton.addEventListener("click", swapClasses);
 
 populatePAXDropdowns();
 populateInput();
