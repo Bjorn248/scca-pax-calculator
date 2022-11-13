@@ -38,7 +38,7 @@ function minify_css {
   file_full_path=$1
   src_stripped=${file_full_path#./src}
   echo "minifying CSS for $file_full_path"
-  ./node_modules/postcss-cli/bin/postcss "$file_full_path" -o "build/$src_stripped"
+  ./node_modules/postcss-cli/index.js "$file_full_path" -o "build/$src_stripped"
 }
 
 function minify_js {
