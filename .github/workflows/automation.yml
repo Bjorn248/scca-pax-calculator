@@ -23,7 +23,7 @@ jobs:
     - run: npm ci
     - run: npm run generate
     - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v3
+      uses: peter-evans/create-pull-request@v4
       with:
         commit-message: auto-generated updates to common.js
         title: auto-generated updates to common.js
