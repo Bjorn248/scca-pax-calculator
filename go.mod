@@ -1,6 +1,6 @@
 module scca-pax-calculator
 
 go 1.22
-toolchain go1.23.7
+toolchain go1.24.1
 
-require golang.org/x/net v0.36.0
+require golang.org/x/net v0.38.0
