@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strconv"
 	"strings"
 	"text/template"
 
@@ -68,7 +69,10 @@ func getPaxMap() string {
 					}
 					paxValue = false
 
-					paxIndices[className] = classPax
+					// Only add entries where the PAX value is a valid number
+					if _, err := strconv.ParseFloat(classPax, 64); err == nil {
+						paxIndices[className] = classPax
+					}
 				}
 			}
 		}

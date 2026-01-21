@@ -42,7 +42,6 @@ const PAXIndex = {
   "HCS": "0.789",
   "HS": "0.780",
   "KM": "0.936",
-  "Pro": "Nationals",
   "SM": "0.870",
   "SMF": "0.857",
   "SS": "0.840",
@@ -50,11 +49,10 @@ const PAXIndex = {
   "SSM": "0.878",
   "SSP": "0.860",
   "SST": "0.838",
-  "Tour": "Shootout/CAM Challenge",
   "XA": "0.861",
   "XB": "0.859",
   "XP": "0.892",
-  "XU": "0.869",
+  "XU": "0.872",
 };
 
 /**
