@@ -24,13 +24,13 @@
   },
   "homepage": "https://github.com/Bjorn248/scca-pax-calculator#readme",
   "devDependencies": {
-    "cssnano": "^6.0.0",
-    "eslint": "^8.27.0",
+    "cssnano": "^7.1.2",
+    "eslint": "^8.57.1",
     "eslint-config-google": "^0.14.0",
     "html-minifier": "^4.0.0",
     "javascript-natural-sort": "^0.7.1",
-    "postcss": "^8.4.31",
-    "postcss-cli": "^10.0.0",
-    "uglify-js": "^3.17.4"
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "uglify-js": "^3.19.3"
   }
 }
